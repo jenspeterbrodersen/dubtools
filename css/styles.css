@@ -1,0 +1,31 @@
+.filename {
+    background-color: lightblue;
+    padding: 15px 15px 15px 30px;
+}
+
+.filebutton {
+    margin-bottom: 15px;
+    padding-left: 0px;
+}
+
+.csv {
+    padding-top:15px;
+    background-color: lightgrey;
+}
+
+.names {
+    padding-top:15px;
+    background-color: lightseagreen
+}
+
+.total {
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+.strip {
+    padding-top:15px;
+    background-color: lightgrey;
+    
+}
+
