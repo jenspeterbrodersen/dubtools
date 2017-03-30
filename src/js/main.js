@@ -123,7 +123,7 @@ window.onload = function () {
         // Send JSON to server         
         $.ajax({
             type: 'POST',
-            url: 'index_new.php',
+            url: 'index.php',
             data: {json: JSON.stringify(csvObj)},
             dataType: 'json',
         });
