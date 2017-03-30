@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<script src="/dubtools/js/striptest.js"></script>
+<script src="https://www.w3schools.com/lib/w3data.js"></script>
+<script src="/dubtools/js/warner1-strip.js"></script>
 <script src="/dubtools/js/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <meta charset="utf-8">
@@ -12,44 +12,19 @@
     <meta name="author" content="">
 
     <title>Simple Sidebar - Start Bootstrap Template</title>
-
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
-
     <!-- local CSS -->
     <link href="css/styles.css" rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
-
 <body>
-
     <div id="wrapper">
-
         <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                </li>
-                <li>
-                    <a href="index_new.php">Convert PT Spotting</a>
-                </li>
-                <li>
-                    <a href="striptest.php">Striptest</a>
-                </li>
-            </ul>
-                               
+        <div w3-include-html="http://dubtools.com/dubtools/html/sidebar-menu.html"></div>
 
-        </div>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
@@ -57,8 +32,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                       <img src="gfx/dubtools-logo.png" style="float:right">
-                        <h1>Strip manus - Warner TV DC Heroes</h1>
+                        <h1>Warner PDF->XML test</h1>
                         <div class="container filebutton">
                             <label class="btn btn-default btn-file">Browse...<input type="file" id="inputfile" style="display: none;"></label>
                             <label class="btn btn-default btn-file" id="download" style="display:none"><a href="file.csv" id="link">Download</a></label>
@@ -81,6 +55,9 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- Menu Toggle Script -->
     <script>
+    // trigger html import
+     w3IncludeHTML();
+
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
@@ -90,16 +67,21 @@
     <?php 
     require_once "Classes/PHPExcel.php";
 
-    $recieved = json_decode($_POST['json']);
+    $recieved = json_decode($_POST['json'], true);
     $myFile = array_pop($recieved);
     $uniqNames = array();
     $length = count($recieved);
 
-    // Put all names into new array 
-    foreach ($recieved as $key => $value) {
-            $uniqNames[] = $value[0];
-    }
+    echo '<pre>'; print_r($recieved[0][character]); echo '</pre>';
 
+
+
+    // Put all names into new array 
+    foreach ($recieved as $value) {
+            $uniqNames[] = $value[character];
+    }
+    // echo '<pre>'; print_r($uniqNames); echo '</pre>';
+    
     $uniqNames = array_unique($uniqNames);
     sort($uniqNames);
     $uniqNames = array_values($uniqNames);
@@ -137,8 +119,8 @@
 
     // Write spotting data to XLSX file
     for ($i = 0; $i <= $length; $i++) {
-        $objPHPExcel->getActiveSheet()->SetCellValue('A'.($i+2), $recieved[$i][0]);
-        $objPHPExcel->getActiveSheet()->SetCellValue('B'.($i+2), $recieved[$i][1]);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A'.($i+2), $recieved[$i][character]);
+        $objPHPExcel->getActiveSheet()->SetCellValue('B'.($i+2), $recieved[$i][dialogue]);
     }
 
     // Write unique characters to new sheet 

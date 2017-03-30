@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="/dubtools/js/main.js"></script>
-<script src="/dubtools/js/jquery.js"></script>
+<script src="/src/js/lib/w3data.js"></script>
+<script src="/src/js/main.js"></script>
+<script src="/src/js/lib/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,13 +12,12 @@
     <meta name="author" content="">
 
     <title>Simple Sidebar - Start Bootstrap Template</title>
-
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/src/css/lib/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="/src/css/simple-sidebar.css" rel="stylesheet">
     <!-- local CSS -->
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="/src/css/styles.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -29,19 +29,10 @@
 <body>
     <div id="wrapper">
         <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                   
-                </li>
-                <li>
-                    <a href="index_new.php">Convert PT Spotting</a>
-                </li>
-                <li>
-                    <a href="striptest.php">Striptest</a>
-                </li>
-            </ul>
-        </div>
+        <!--<div w3-include-html="http://dubtools.com/dubtools/html/sidebar-menu.html"></div>-->
+        <div w3-include-html="/src/html/sidebar-menu.html"></div>
+
+
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
@@ -49,7 +40,6 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                      <img src="gfx/dubtools-logo.png" style="float:right">
                         <h1>Convert PT spotting</h1>
                         <div class="container filebutton">
                             <label class="btn btn-default btn-file">Browse...<input type="file" id="inputfile" style="display: none;"></label>
@@ -72,6 +62,10 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- Menu Toggle Script -->
     <script>
+    // trigger html import
+     w3IncludeHTML();
+
+
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
