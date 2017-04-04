@@ -129,8 +129,8 @@ window.onload = function () {
         });
 
         // Activate the download button
-        $('#link').attr("href", "http://www.jenspeter.net/dubtools/pt/"+filename+'.xlsx');
-        // $('#link').attr("href", "pt/"+filename+'.xlsx');
+        // $('#link').attr("href", "http://www.jenspeter.net/dubtools/pt/"+filename+'.xlsx');
+        $('#link').attr("href", "/test/pt/"+filename+'.xlsx');
         $('#download').show();
       };
       reader.readAsText(file);

@@ -67,7 +67,8 @@
 
     <!-- PHP script-->
     <?php 
-    require_once "/src/php/lib/Classes/PHPExcel.php";
+    // require_once __FILE__+"/src/php/lib/Classes/PHPExcel.php";
+    require_once "/Users/jpb/Sites/dubtools/Classes/PHPExcel.php";
 
     $recieved = json_decode($_POST['json']);
     $myFile = array_pop($recieved);
@@ -157,8 +158,8 @@
 
     // Save Excel 2007 file
     $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
-    $objWriter->save(str_replace(__FILE__,'pt/'.$myFile.'.xlsx',__FILE__));
-    ?>
+    $objWriter->save(str_replace(__FILE__,'/test/pt/'.$myFile.'.xlsx',__FILE__));
+   ?>
 </body>
 </html>
 
