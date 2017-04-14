@@ -1,29 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="/src/js/lib/w3data.js"></script>
-<script src="/src/js/main.js"></script>
-<script src="/src/js/lib/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script src="/js/main.js"></script>
+<link href="/css/main.css" rel="stylesheet">
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
-
-    <title>Simple Sidebar - Start Bootstrap Template</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="/src/css/lib/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="/src/css/simple-sidebar.css" rel="stylesheet">
-    <!-- local CSS -->
-    <link href="/src/css/styles.css" rel="stylesheet">
 
 </head>
 <body>
     <div id="wrapper">
         <!-- Sidebar -->
-        <!--<div w3-include-html="http://dubtools.com/dubtools/html/sidebar-menu.html"></div>-->
-        <div w3-include-html="/src/html/sidebar-menu.html"></div>
-
+        <div w3-include-html="/html/sidebar-menu.html"></div>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
@@ -48,11 +38,6 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Menu Toggle Script -->
     <script>
     // trigger html import
      w3IncludeHTML();

@@ -43,14 +43,15 @@ window.onload = function () {
             chunks.push(data[0]);
             data = regex.exec(lines);
         }
-        // console.log("chunks ", chunks[3])
+        console.log("chunks ", chunks[3])
 
         // Find NAMES in CHUNKS
         for (i = 0; i < chunks.length; i++) {
 
             // check for characternames in CHUNKS
             // if (/<Chunk x1="252"/.exec(chunks[i])) {
-            if (/<Chunk x1="216"/.exec(chunks[i])) {
+            if (/<Chunk x1="90"/.exec(chunks[i])) {
+            // if (/<Chunk x1="216"/.exec(chunks[i])) {
 
                 
                 int = chunks[i].match(/<Word[^>]*>([\s\S]*?)<\/Word>/g).length; // find # of matches
@@ -73,7 +74,8 @@ window.onload = function () {
             }
 
             // check for dialogue lines in CHUNKS
-            if (/<Chunk x1="180"/.exec(chunks[i])) {
+            // if (/<Chunk x1="180"/.exec(chunks[i])) {
+            if (/<Chunk x1="288"/.exec(chunks[i])) {
                 
                 int = chunks[i].match(/<Word[^>]*>([\s\S]*?)<\/Word>/g).length; // find # of matches
                 matches = chunks[i].match(/<Word[^>]*>([\s\S]*?)<\/Word>/g); 
@@ -110,8 +112,13 @@ window.onload = function () {
         // console.log("data ", data)
 
 
-
-        script.push(filename);
+console.log("filename", filename)
+        script.push({
+            "filename": filename
+        });
+        console.log("script with filename", script)
+        json_script = JSON.stringify(script);
+        console.log("json_script ", json_script )
 
         // Send array to PHP page
         $.ajax({
@@ -123,7 +130,7 @@ window.onload = function () {
 
         // Activate the download button
         // $('#link').attr("href", "http://www.jenspeter.net/dubtools/strip/"+filename+'.xlsx');
-        $('#link').attr("href", "strip/"+filename+'.xlsx');
+        $('#link').attr("href", filename+'.xlsx');
         $('#download').show();
 
     };

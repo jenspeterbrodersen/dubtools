@@ -1,30 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="https://www.w3schools.com/lib/w3data.js"></script>
-<script src="/dubtools/js/warner1-strip.js"></script>
-<script src="/dubtools/js/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script src="/js/main.js"></script>
+<link href="/css/main.css" rel="stylesheet">
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Simple Sidebar - Start Bootstrap Template</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
-    <!-- local CSS -->
-    <link href="css/styles.css" rel="stylesheet">
 
 </head>
+
 <body>
     <div id="wrapper">
         <!-- Sidebar -->
-        <div w3-include-html="http://dubtools.com/dubtools/html/sidebar-menu.html"></div>
-
+        <div w3-include-html="/html/sidebar-menu.html"></div>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
@@ -32,14 +22,13 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1>Warner PDF->XML test</h1>
+                        <h1 id="menu-toggle">Warner PDF->XML test</h1>
                         <div class="container filebutton">
                             <label class="btn btn-default btn-file">Browse...<input type="file" id="inputfile" style="display: none;"></label>
                             <label class="btn btn-default btn-file" id="download" style="display:none"><a href="file.csv" id="link">Download</a></label>
                         </div>
                         <div class="container filename"><div id="list"></div></div>
                          <div class="container strip col-md-12"><div id="csv"></div></div>                    
-                         
                     </div>
                 </div>
             </div>
@@ -47,15 +36,8 @@
         <!-- /#page-content-wrapper -->
 
     </div>
-    <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Menu Toggle Script -->
     <script>
-    // trigger html import
+    // Trigger html import
      w3IncludeHTML();
 
     $("#menu-toggle").click(function(e) {
@@ -63,17 +45,27 @@
         $("#wrapper").toggleClass("toggled");
     });
     </script>
+    
     <!-- PHP script-->
     <?php 
-    require_once "Classes/PHPExcel.php";
 
+    include '/Users/jpb/Sites/dubtools/build/Classes/PHPExcel.php';
+    include '/Users/jpb/Sites/dubtools/build/Classes/PHPExcel/IOFactory.php';
+
+    // require_once 'PHPExcel.php';
+    require_once '/Users/jpb/Sites/dubtools/build/Classes/PHPExcel.php';
+    
     $recieved = json_decode($_POST['json'], true);
     $myFile = array_pop($recieved);
     $uniqNames = array();
     $length = count($recieved);
 
-    echo '<pre>'; print_r($recieved[0][character]); echo '</pre>';
+    // echo '<pre>'; print_r($recieved[0][character]); echo '</pre>';
+    echo '<pre>'; print_r($recieved); echo '</pre>';
+    echo '<pre>'; print_r($myFile); echo '</pre>'; 
 
+    echo $myFile[filename];
+    // $recieved[$i][character])
 
 
     // Put all names into new array 
@@ -147,7 +139,9 @@
 
     // Save Excel 2007 file
     $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
-    $objWriter->save(str_replace(__FILE__,'strip/'.$myFile.'.xlsx',__FILE__));
+    // $objWriter->save(str_replace(__FILE__,'strip'.$myFile[filename].'.xlsx',__FILE__));
+    //  $objWriter->save(__FILE__,$myFile[filename].'.xlsx',__FILE__);
+    $objWriter->save('/Users/jpb/Sites/dubtools/build/processed/'.$myFile[filename].'.xlsx')
 
 
    
