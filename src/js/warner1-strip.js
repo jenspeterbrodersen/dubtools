@@ -90,10 +90,21 @@ window.onload = function () {
                     finalDialogue = finalDialogue +" "+ data3[1];
                     data3 = regexWord.exec(chunks[i]);
                 }
-                // names.push(finalDialogue);
+                console.log("finalDialogue ", finalDialogue)
+                finalDialogue_CC = finalDialogue.substr(0, 1).toUpperCase() + finalDialogue.substr(1).toLowerCase();;
+                // var dial2 = finalDialogue_CC.replace(/([!?.]\s+)([a-z])/g, function (m, $1, $2) {
+                //     return $1 + $2.toUpperCase();
+                //     console.log("dial2 ", dial2)
+                // });
+                // finalDialogue_CC = finalDialogue_CC.charAt(0).toUpperCase();
+                
+
+                console.log("finalDialogue_CC ", finalDialogue_CC)
+                
+
                 script.push({
                     "character": finalName.trim(),
-                    "dialogue": finalDialogue.trim()
+                    "dialogue": finalDialogue_CC.trim()
                 });
             }
         }    
